@@ -1,15 +1,14 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+# Directoare Android Studio
+.idea/
+.gradle/
 local.properties
+
+# Fișiere de build și cache
+*.iml
+*.log
+*.apk
+*.keystore
+
+# Cache și fișiere temporare
+build/
+captures/
