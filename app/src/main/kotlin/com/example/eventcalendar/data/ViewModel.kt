@@ -20,7 +20,7 @@ class EventViewModel(private val repository: EventRepository) : ViewModel() {
     fun delete(event: Event) = viewModelScope.launch {
         repository.delete(event)
     }
-//sjkhac
+//sjkhacdsds
     fun deleteExpiredEvents(currentTime: Long) = viewModelScope.launch {
         repository.deleteExpiredEvents(currentTime)
     }
