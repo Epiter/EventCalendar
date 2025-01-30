@@ -1,0 +1,14 @@
+# Directoare Android Studio
+.idea/
+.gradle/
+local.properties
+
+# Fișiere de build și cache
+*.iml
+*.log
+*.apk
+*.keystore
+
+# Cache și fișiere temporare
+build/
+captures/
