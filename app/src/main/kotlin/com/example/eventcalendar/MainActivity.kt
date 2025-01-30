@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
         val database = EventDatabase.getDatabase(this)
         val repository = EventRepository(database.eventDao())
 
-        // Creează ViewModel folosind factory
+        // Creeaza ViewModel folosind factory
         val viewModelFactory = EventViewModelFactory(repository)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(EventViewModel::class.java)
 
