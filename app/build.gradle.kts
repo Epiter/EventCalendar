@@ -3,14 +3,16 @@ plugins {
     alias(libs.plugins.kotlin.android) // Plugin pentru Kotlin
     alias(libs.plugins.kotlin.compose) // Plugin pentru Jetpack Compose
     alias(libs.plugins.ksp) // Plugin pentru KSP
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.21"
 }
 
 android {
-    namespace = "com.example.eventcalendar"
+    namespace = "com.example.runescroll"
+
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.eventcalendar"
+        applicationId = "com.example.runescroll"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
@@ -59,30 +61,40 @@ android {
 
 dependencies {
 
-    // AndroidX Core
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.activity.compose)
+    // Core Android
+    implementation(libs.androidx.core.ktx.v1120)
+    implementation(libs.androidx.appcompat)
 
     // Jetpack Compose
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
+    implementation(libs.ui)
+    implementation(libs.androidx.material3.v131)
+    implementation(libs.ui.tooling.preview)
 
-    // Testare
+    // Lifecycle și ViewModel
+    implementation(libs.androidx.lifecycle.runtime.ktx.v262)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+
+    // Room Database + KSP
+    implementation(libs.androidx.room.runtime.v252)
+    implementation(libs.androidx.room.ktx.v252)
+    ksp(libs.androidx.room.compiler.v252)
+
+    // Coroutines
+    implementation(libs.kotlinx.coroutines.android)
+
+    // Accompanist pentru UI extras
+    implementation(libs.accompanist.systemuicontroller)
+
+    // Jetpack Navigation
+    implementation(libs.androidx.navigation.compose)
+
+    implementation(libs.kotlinx.serialization.json)
+
+    implementation(libs.gson)
+
+    // Testing
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
-
-    // Room Database pentru gestionarea bazei de date
-    implementation(libs.room.runtime) // Biblioteca principala Room
-    ksp(libs.room.compiler) // Necesita KPS pentru generarea codului Room
-    implementation(libs.room.ktx) // Suport pentru coroutines in Room
+    androidTestImplementation(libs.androidx.junit.v115)
+    androidTestImplementation(libs.androidx.espresso.core.v351)
 }

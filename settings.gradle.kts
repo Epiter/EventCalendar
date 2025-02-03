@@ -16,7 +16,7 @@ dependencyResolutionManagement {
 
 }
 
-rootProject.name = "EventCalendar"
+rootProject.name = "RuneScroll"
 
 // Include module app
 include(":app")
